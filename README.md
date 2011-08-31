@@ -1,10 +1,12 @@
 Notes
 =====
 
+Simple blog implemented i ruby on rails using hbase to store posts. Uses slim for templates.
+
 HBase
 -----
 
-To start hbase server, and thrift server used by massive_record gem to communicate with the server:
+To install hbase, simply download and unpack. To start hbase, start both the hbase server AND the thrift server:
 
 > $ cd ~/src/hbase-0.90.3-cdh3u1/bin
 > $ ./start-hbase.sh
@@ -14,15 +16,7 @@ To use the irb shell or to stop it:
 > $ ~/src/hbase-0.90.3-cdh3u1/bin/hbase shell
 > $ ~/src/hbase-0.90.3-cdh3u1/bin/stop-hbase.sh
 
-Create the initial database (and seed values?)
-
-  column_family :info do
-    field :title
-    field :content
-    field :author_name
-    field :author_email
-  end
-
+To create table and column families.
 
 create 'posts', 'cf'
 
@@ -39,17 +33,5 @@ Markdown
 To update this documentation.
 
 >  $ rdiscount README.md
-
-Installation
-------------
-
-Remove Gemfile.lock before
-
-
-Problemer som oppstod underveis
-===============================
-
-- Det stod ikke i at man må starte opp thrift serveren
-- Eksempelappen har sjekket inn Gemfile.lock, som man må huske på å slette først.
 
 
