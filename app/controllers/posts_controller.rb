@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.all
-
+    @posts = Post.get_start_and_offset(3,"2")
+    # @posts = Post.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }

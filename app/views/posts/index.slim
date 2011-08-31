@@ -3,7 +3,7 @@ p
   = link_to 'New Post', new_post_path
 
 - @posts.each do |post|
-  h3.blog = post.title
+  h3.blog = post.id + ":" + post.title
   .byline = post.author_name
   .author_email = post.author_email
 
