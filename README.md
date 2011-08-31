@@ -16,7 +16,7 @@ To use the hbase ruby (jruby irb) shell:
 
     $ ~/src/hbase-0.90.3-cdh3u1/bin/hbase shell
 
-To create table and column families.
+To create table and column families from hbase shell:
 
     create 'posts', 'cf'
 
