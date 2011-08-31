@@ -1,4 +1,7 @@
 h1 Blog posts
+p
+  = link_to 'New Post', new_post_path
+
 - @posts.each do |post|
   h3.blog = post.title
   .byline = post.author_name

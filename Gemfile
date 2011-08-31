@@ -11,7 +11,6 @@ gem 'rails', '3.0.7'
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
 gem 'slim'
-
 gem 'sqlite3'
 
 # Bundle gems for the local environment. Make sure to
