@@ -1,19 +1,16 @@
 class Post < MassiveRecord::ORM::Table
 
-  ## references_many :tags, :store_in => :cf
-  # references_many :emails, :records_starts_from => :tags_starts_from
-  references_many :tags, :records_starts_from => :posts_start_id
-
   default_scope select(:cf)
 
   column_family :cf do
-    field :title
-    field :content
-    field :author_name
-    field :author_email
+    field :title, :string
+    field :content, :string
+    field :author_name, :string
+    field :author_email, :string
+    field :tags, :array
   end
 
-  attr_accessible :title, :content, :author_name, :author_email
+  attr_accessible :title, :content, :author_name, :author_email, :tags
 
   validates_presence_of :title, :content, :author_name, :author_email
   validates_format_of :author_email, :with => /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i
@@ -26,6 +23,14 @@ class Post < MassiveRecord::ORM::Table
       @posts << Post.find(record.id)
     end
     return @posts
+  end
+
+  def tags_as_string
+    if(tags)
+      tags.join(', ')
+    else
+      ""
+    end
   end
 
   private

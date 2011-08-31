@@ -2,7 +2,7 @@ h1 = @post.title
 .byline = @post.author_name
 .author_email = @post.author_email
 p.post_body = @post.content
-
+p.tags = 'Tags: ' + @post.tags.join(', ')
 = link_to 'Edit', edit_post_path(@post)
 ||
 = link_to 'Back', posts_path

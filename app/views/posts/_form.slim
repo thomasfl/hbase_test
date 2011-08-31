@@ -17,6 +17,9 @@
   .field
     = f.label :content
     = f.text_area :content, :rows => 3
+  .field
+    = f.label :tags
+    input id="post_tags" name="post[tags]" size="30" type="text" value="#{@post.tags_as_string}"
 
   .actions
     = f.submit

@@ -2,8 +2,8 @@ class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    @posts = Post.get_start_and_offset(3,"2")
-    # @posts = Post.all
+    # @posts = Post.get_start_and_offset(3,"2")
+    @posts = Post.all
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
@@ -40,6 +40,7 @@ class PostsController < ApplicationController
   # POST /posts
   # POST /posts.xml
   def create
+    params[:post][:tags] = string2arr(params[:post][:tags])
     @post = Post.new(params[:post])
 
     respond_to do |format|
@@ -53,10 +54,16 @@ class PostsController < ApplicationController
     end
   end
 
+  # Convert comma separated string to array
+  def string2arr(string)
+    string.split(",").map{|x| x.strip}
+  end
+
   # PUT /posts/1
   # PUT /posts/1.xml
   def update
     @post = Post.find(params[:id])
+    params[:post][:tags] = string2arr(params[:post][:tags])
 
     respond_to do |format|
       if @post.update_attributes(params[:post])
