@@ -27,8 +27,14 @@ To add som seed values from the shell:
     put 'posts', 'post1', 'cf:author_name', 'Thomas Flemming'
     put 'posts', 'post1', 'cf:author_email', 'thomas.flemming@gmail.com'
 
+Changelog
+---------
+
+2011-08-31
+
+* Tags are stored as array in blog posts
+
 TODO
 ----
 
-* Add tags to blog posts
 * Pagination if more than 5 posts is displayed on the index page
