@@ -13,6 +13,7 @@ To install hbase, simply download and unpack. To start hbase, start both the hba
     $ ./hbase-daemon.sh start thrift -p 9090
 
 To use the hbase ruby (jruby irb) shell:
+
     $ ~/src/hbase-0.90.3-cdh3u1/bin/hbase shell
 
 To create table and column families.
