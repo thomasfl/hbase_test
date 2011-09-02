@@ -3,16 +3,15 @@ p
   = link_to 'New Post', new_post_path
 
 - @posts.each do |post|
-  h3.blog = post.id + ":" + post.title
-  .byline = post.author_name
-  .author_email = post.author_email
+  h2.blog = link_to(post.title, post)
+  .byline
+    'Written by:
+    a href="mailto:#{post.author_email}" #{post.author_name}
 
   p = post.content
-  = link_to 'Show', post
-  ||
-  = link_to 'Edit', edit_post_path(post)
-  ||
-  = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
 
 p
   = link_to 'New Post', new_post_path
+
+p
+ = will_paginate @pagination

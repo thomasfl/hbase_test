@@ -1,9 +1,52 @@
+# -*- coding: utf-8 -*-
+
+# A substitute for ActiveRecord with the methods added by the will_paginate gem
+# used by will_paginate to render pagination controls.
+class Pagination
+
+  attr_accessor :total_pages, :current_page
+
+  def initialize(total_pages, current_page)
+    @total_pages = total_pages
+    @current_page = current_page
+  end
+
+  def previous_page
+    if(current_page - 1 == 0)
+      nil
+    else
+      current_page - 1
+    end
+  end
+
+  def next_page
+    if(current_page == total_pages)
+      nil
+    else
+      current_page + 1
+    end
+  end
+
+end
+
 class PostsController < ApplicationController
   # GET /posts
   # GET /posts.xml
   def index
-    # @posts = Post.get_start_and_offset(3,"2")
-    @posts = Post.all
+
+    per_page = 5
+    total_pages = Post.all.size / per_page
+    current_page = params[:page].to_i
+    if(current_page == 0 or current_page == 1)
+      current_page = 1
+      start_id = 1
+    else
+      start_id = current_page.to_i * per_page
+    end
+
+    @pagination = Pagination.new(total_pages, current_page)
+    @posts = Post.all(:limit => per_page, :offset => start_id.to_s)
+
     respond_to do |format|
       format.html # index.html.erb
       format.xml  { render :xml => @posts }
